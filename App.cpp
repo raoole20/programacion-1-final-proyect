@@ -1,14 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-
 #include "Customer.cpp"
 #include "Product.cpp"
 #include "Sales.cpp"
 #include "ProductQuantity.cpp"
-
 using namespace std;
-
+ // Constructor de la clase App
 class App
 {
 public:
@@ -68,7 +66,7 @@ public:
 		cout << endl << endl << endl;
 		cout << "* Raul Espina: 30.643.473" << endl;
 		cout << "* Arelenys Davila: 15.764.502" << endl;
-		cout << "Pulsar cualquier tecla para continuar..." << endl;
+		cout << "Para continuar, presiona cualquier tecla y luego Enter..." << endl;
 		string temp;
 		cin >> temp;
 	}

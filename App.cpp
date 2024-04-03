@@ -12,6 +12,7 @@ using namespace std;
 class App
 {
 public:
+	// Constructor de la clase App
 	App() {
 		Customers customerInstace("", "", "", "");
 		this->customerService = customerInstace;
@@ -19,15 +20,17 @@ public:
 		Product productInstance("", "", "", 0, 0, false, 0);
 		this->productService = productInstance;
 	};
+	// Inicializar la aplicación
 	void init() {
 		this->printTitle("GESTOR DE VENTAS");
 		this->printIntegrators();
 	};
-
+	// Detener la aplicacion
 	void killApp() {
 		run = false;
 	}
-
+ 
+	// muestra el menu principal
 	int showMenu() {
 		this->clear();
 		this->printTitle("MENU PRINCIPAL");
@@ -45,6 +48,7 @@ public:
 		return tempOption;
 	}
 
+	// Muestra en pantalla separadores de texto
 	void printSeparator(int type = 0) {
 		switch (type) {
 		case 1:
@@ -55,12 +59,15 @@ public:
 		}
 	}
 
+	// Muestra en pantalla un titulo
 	void printTitle(string message) {
 		this->printSeparator();
 		cout << "\t   " << message << endl;
 		this->printSeparator();
 	}
 
+
+	// Muestra en pantalla los integrantes
 	void printIntegrators() {
 		cout << endl;
 		this->printSeparator(1);
@@ -74,10 +81,12 @@ public:
 		cin >> temp;
 	}
 
+	// limpia la consola
 	void clear() {
 		std::cout << "\x1B[2J\x1B[H";
 	}
 
+	// Muestra el menu de los clientes
 	void customerMenu() {
 		auto continueProcess = true;
 		while (continueProcess) {
@@ -344,6 +353,7 @@ public:
 		}
 	}
 
+	// Muestra el menu de los productos
 	void productMenu() {
 		auto continueProcess = true;
 
@@ -604,6 +614,7 @@ public:
 		} while (continueProcess);
 	}
 
+	// Muestra el menu de ventas
 	void salesMenu() {
 		auto continueProcess = true;
 		while (continueProcess) {
@@ -1103,8 +1114,8 @@ public:
 			}
 		}
 	}
-
-void SupplierMenu() {
+	// Muestra el menu de los proveedores
+	void SupplierMenu() {
 		auto continueProcess = true;
 		while (continueProcess) {
 			this->clear();
@@ -1363,11 +1374,15 @@ void SupplierMenu() {
 			}
 		}
 	}
+
+	// Pausa el programa
 	void pause() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 		std::cout << "Presione ENTER para continuar...";
 		std::cin.get();
 	}
+
+	// Obtener el estaddo de la variable de control
 	bool getRun() {
 		return this->run;
 	}

@@ -39,7 +39,10 @@ int main()
                 app.productMenu(); // Acceder al módulo de productos
                 break;
             case 3:
-                app.salesMenu(); // Acceder al módulo de pedidos/ventas
+                app.salesMenu(); // Acceder al módulo de ventas
+                break;
+			case 4:
+                app.SupplierMenu() ; // Acceder al módulo de Proveedores
                 break;
             case 9:
                 app.clear();

@@ -8,7 +8,8 @@
 #include "Customer.cpp"
 
 using namespace std;
-
+// Este código define una clase llamada "Sales" (Ventas) en un sistema de ventas.
+// La clase tiene atributos como "id", "customer", "productList", "total", etc.
 class Sales {
 public:
 	Sales(Customers customer, vector<ProductQuantity> productList)
@@ -40,14 +41,14 @@ public:
 			cout << "\t-------------" << endl;
 		}
 		cout << "Total: " << this->total << "$" << endl;
-		cout << "(El valor de la factura esta en Dolares Estados Unidences)";
+		cout << "(El valor de la factura esta en Dolares estadounidense)";
 
 	}
 private:
-	string id;
-	Customers customer;
-	vector <ProductQuantity> productList;
-	float total;
-	float totalWithDiscount;
-	float discount;
+    string id;  // ID de la factura
+    Customers customer;  // Cliente asociado a la venta
+    vector<ProductQuantity> productList;  // Lista de productos y sus cantidades
+    float total;  // Costo total del pedido
+    float totalWithDiscount;  // Costo total con descuento aplicado
+    float discount;  // Monto del descuento
 };

@@ -909,100 +909,52 @@ public:
 							this->SupplierList.push_back(Supplier);
 							cout << "Proveedor guardado con exito" << endl;
 						}
-						else {
+						 else {
 							cout << "Pedido no creado" << endl;
 							this->pause();
 							break;
 						}
 					}
-
-					vector<ProductQuantity> products;
-					bool continueithProducts = true;
-					do {
-						cout << "Introduzca el ID del producto que desea registrar: ";
-						Product currentProduct; 
-						string productId;
-						int	quantity;
-						cin >> productId;
-						auto productFound = false;
-						for (auto p : this->productList) {
-							if (p.getId() == productId) {
-								productFound = true;
-								currentProduct = p;
-							}
-						}
-
-						if (!productFound) {
-							this->printSeparator(1);
-							this->printSeparator(1);
-							cout << endl;
-							cout << endl;
-							cout << "Producto no encontrado" << endl;
-							cout << endl;
-							this->printSeparator(1);
-							this->printSeparator(1);
-						}
-						else {
-							auto continueWithSubProcess = true;
-							do {
-								cout << "Ingresa la cantidad del producto: " << endl;
-								cin >> quantity;
-
-								if (quantity > currentProduct.getStock()) {
-									cout << endl;
-									this->printSeparator(1);
-									this->printSeparator(1);	
-									cout << endl;
-									cout << "La cantidad ingresada supera el stock del producto" << endl;
-									cout << "Stock actual: " << currentProduct.getStock() << endl;
-									cout << "Desea ingresar una cantidad menor? " << endl;
-									cout << "cualquier opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
-									cout << "1. Si" << endl;
-									cout << "2. No" << endl;
-									this->printSeparator(1);
-									this->printSeparator(1);
-									cout << endl;
-
-									string temp;
-									cin >> temp;
-									if (temp != "1" && temp != "si") {
-										continueWithSubProcess = false;
-									}
-								}
-								else {
-									cout << "Producto agregado..." << endl;
-									currentProduct.setStock(currentProduct.getStock() - quantity);
-									products.push_back({ quantity, currentProduct });
-									continueWithSubProcess = false;
-								}
-							} while (continueWithSubProcess);
-						}
-
-						cout << endl << endl << endl;
-						cout << "Desea registrar otro producto? " << endl;
-						cout << "cualquier opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
-						cout << "1. Si" << endl;
-						cout << "2. No" << endl;
-						string temp;
-						cin >> temp;
-
-						if (temp != "1" && temp != "si") {
-							continueProcess = false;
-						}
-					} while (continueProcess);
-
-					if (products.size() == 0) {
-						cout << "No se han ingresado suficientes productos para realizar un pedido." << endl;
-						cout << "Pedido no creado" << endl;
-						this->pause();
-						break;
-					}
-
 					
 				}
-					break;
+				
+				break;
 				case 4:
-					break;
+				{
+				this->clear();
+					this->printTitle("Lista Pedidos");
+					cout << "Lista de pedidos registrados" << endl;
+
+					if (OrderModuleList.size() == 0) {
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						cout << "No hay proveedores registrados" << endl;
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl;
+					}
+					else {
+						for (auto c : this->OrderModuleList) {
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl << endl << endl;
+							//c.displayUserInformation();
+							cout << endl << endl << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl;
+						}
+					}
+
+
+					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					string temp; 
+					cin >> temp;
+				}
+					  break;
+					
 				case 5:
 					continueProcess = false;
 					break;

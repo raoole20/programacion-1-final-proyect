@@ -622,6 +622,23 @@ public:
 				{
 					this->clear();
 					this->printTitle("Módulo Factura");
+
+					if(this->productList.size() == 0) {
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						cout << "NO HAY PRODUCTOS EN STOCK" << endl;
+						cout << "Debe registrar productos antes de crear una factura" << endl;
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						this->pause();
+
+						break;
+					}
+
 					cout << "Por favor ingrese los datos de la Factura";
 					cout << endl << endl << endl;
 					this->printSeparator(1);

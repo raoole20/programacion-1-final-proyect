@@ -5,12 +5,13 @@
 #include <vector>
 #include <cstdlib>
 #include <string>
-#include "UUID.cpp"
+#include "UUID.cpp"  // Incluye la implementación de UUID (suponiendo que existe)
 using namespace std;
 
 class Product
 {
 public:	
+    // Constructor con valores predeterminados para las variables miembro
 	Product(string id = "", string name = "", string description = "", float price = 0, int stock = 0, bool isOffer = false, float offerPrice = 0) {
 		this->id = id;
 		this->name = name;
@@ -21,14 +22,17 @@ public:
 		this->offerPrice = offerPrice;
 	}
 
-	void displayProductInformation() {
-		cout << "ID del producto: " << this->id << endl;
-		cout << "Nombre del producto: " << this->name << endl;
-		cout << "Descripcion del producto: " << this->description << endl;
-		cout << "Precio del producto: " << this->price << endl;
-		cout << "Stock del producto: " << this->stock << endl;
-	};
+    // Muestra información del producto
+    void displayProductInformation()
+    {
+        cout << "ID del producto: " << this->id << endl;
+        cout << "Nombre del producto: " << this->name << endl;
+        cout << "Descripción del producto: " << this->description << endl;
+        cout << "Precio del producto: " << this->price << endl;
+        cout << "Stock del producto: " << this->stock << endl;
+    };
 
+    // Crea un nuevo producto
 	Product createNewProduct() {
 		string colums[5] = { "Nombre", "Descripcion", "Precio", "Stock", "Oferta" };
 		Product newProduct("", "", "", 0, 0, false, 0);
@@ -78,7 +82,7 @@ public:
 		}
 		return newProduct;
 	}
-
+// Muestra los detalles del producto.
 	void displayProductDetails() {
 		cout << "ID del producto: " << this->id << endl;
 		cout << "Nombre del producto: " << this->name << endl;
@@ -87,6 +91,7 @@ public:
 		cout << "Stock del producto: " << this->stock << endl;
 	}		
 
+// Modifica los atributos del producto.
 	void modifiProduct() {
 		string colums[5] = { "Nombre", "Descripcion", "Precio", "Stock", "Oferta" };
 		for (auto colum : colums) {
@@ -133,33 +138,43 @@ public:
 	
 	}
 
+// Obtiene el ID del producto.
 	string getId() {
 		return this->id;
 	}
+// Obtiene el nombre del producto.
 	string getName() {
 		return this->name;
 	}
+// Obtiene la descripción del producto.
 	string getDescription() {
 		return this->description;
 	}
+// Obtiene el precio del producto.
 	float getPrice() {
 		return this->price;
 	}
+// Obtiene el stock del producto.
 	int getStock() {
 		return this->stock;
 	}
+// Obtiene si el producto está en oferta.
 	bool getIsOffer() {
 		return this->isOffer;
 	}
+// Obtiene el precio de oferta del producto.
 	float getOfferPrice() {
 		return this->offerPrice;
 	}
+// Establece el nombre del producto.
 	void setName(string name) {
 		this->name = name;
 	}
+// Establece la descripción del producto.
 	void setDescription(string description) {
 		this->description = description;
 	}
+// Establece el precio del producto. 
 	void setPrice(float price) {
 		this->price = price;
 	}
@@ -180,6 +195,7 @@ public:
 	}
 
 private:
+    // Atributos privados de la clase
 	string id;
 	string name;
 	string description;

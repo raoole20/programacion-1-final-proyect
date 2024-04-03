@@ -1,14 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-
 #include "Customer.cpp"
 #include "Product.cpp"
 #include "Sales.cpp"
 #include "ProductQuantity.cpp"
-
 using namespace std;
-
+ // Constructor de la clase App
 class App
 {
 public:

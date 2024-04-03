@@ -356,6 +356,7 @@ public:
 						this->printTitle("REGISTRO De Productos");
 						cout << "Por favor ingrese los datos del producto";
 						cout << endl << endl << endl;
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 						auto producto = this->productService.createNewProduct();
 						cout << endl << endl << endl;
 
@@ -439,12 +440,14 @@ public:
 								cout << endl << endl << endl;
 
 								cout << "Desea modificar al Producto" << endl;
+								cout << "Cualquier opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
 								cout << "1. Si" << endl;
 								cout << "2. No" << endl;
 								string temp;
 								cin >> temp;
 
-								if (temp == "1") {
+								if (temp == "1" || temp == "si") {
+									std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 									p.modifiProduct();
 									cout << endl << endl << endl;
 									this->printSeparator(1);
@@ -512,7 +515,8 @@ public:
 						}
 						else {
 							cout << "Desea eliminar al Producto? " << endl;
-							cout << "(En caso de no escojer una opcion valida el producto ser� eliminado)" << endl << endl;
+							cout << "Cualquier opcion diferente a 1 sera considerado como un no" << endl;
+							cout << "(En caso de no escoger una opcion valida el producto sera eliminado)" << endl << endl;
 							cout << "1. Si" << endl;
 							cout << "2. No" << endl;
 							int deleteOption;

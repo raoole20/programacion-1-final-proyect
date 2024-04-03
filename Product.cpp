@@ -36,27 +36,39 @@ public:
 		newProduct.setId(to_string(id._id));
 		for (auto colum : colums) {
 			auto valid = false;
+
 			do {
 				if (colum != "Oferta") {
 					cout << "Ingrese el " << colum << " del producto: ";
+					cout << "\n";
 					string value;
-					cin >> value;
-
+					std::getline(std::cin, value);
 					if (colum == "Nombre") {
 						newProduct.setName(value);
+						valid = true;
 					}
 					else if (colum == "Descripcion") {
 						newProduct.setDescription(value);
+						valid = true;
 					}
 					else if (colum == "Precio") {
-						auto price = stof(value);
-						newProduct.setPrice(price);
+						    try {
+								auto price = stof(value);
+								newProduct.setPrice(price);
+								valid = true;
+							} catch (std::invalid_argument&) {
+								cout << "Por favor, ingrese un número válido para el precio." << endl;
+							}
 					}
 					else {
-						newProduct.setStock(stoi(value));
+						try {
+							newProduct.setStock(stoi(value));
+							valid = true;
+						}
+						catch(const std::exception& e) {
+							cout << "Por favor, ingrese un número válido para el Stok." << endl;
+						}
 					}
-
-					valid = true;
 				}
 				else {
 				
@@ -83,38 +95,37 @@ public:
 				if (colum != "Oferta") {
 					cout << "Ingrese el nuevo " << colum << " del producto: ";
 					string value;
-					cin >> value;
+					std::getline(std::cin, value);
 
 					if (colum == "Nombre") {
 						this->setName(value);
+						valid = true;
 					}
 					else if (colum == "Descripcion") {
 						this->setDescription(value);
+						valid = true;
 					}
 					else if (colum == "Precio") {
-						auto price = stof(value);
-						this->setPrice(price);
+						    try {
+								auto price = stof(value);
+								this->setPrice(price);
+								valid = true;
+							} catch (std::invalid_argument&) {
+								cout << "Por favor, ingrese un número válido para el precio." << endl;
+							}
 					}
 					else {
-						this->setStock(stoi(value));
+						try {
+							this->setStock(stoi(value));
+							valid = true;
+						}
+						catch(const std::exception& e) {
+							cout << "Por favor, ingrese un número válido para el Stok." << endl;
+						}
 					}
-
 					valid = true;
 				}
 				else {
-					cout << endl << endl << endl;
-					cout << "El producto tiene oferta? Si/No: " << endl;
-					cout << "Cualquier otra respuesta sera considerada como 'No'" << endl;
-					string offer;
-					cin >> offer;
-					if (offer == "Si" || offer == "si") {
-						this->setIsOffer(true);
-						cout << "Ingrese el precio de oferta del producto" << endl;
-						string offerPrice;
-						cin >> offerPrice;
-						auto offerPriceParser = stof(offerPrice);
-						this->setOfferPrice(offerPriceParser);
-					}
 					valid = true;
 				}
 			} while (!valid);

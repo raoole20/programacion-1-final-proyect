@@ -35,7 +35,7 @@ public:
 			do {
 				if (colum != "Email" && colum != "Telefono") {
 					string value;
-					cin >> value;
+					std::getline(std::cin, value);
 					if (value.length() < 3) {
 						cout << "El " << colum << " ingresado no es valido, intente nuevamente" << endl;
 						continue;
@@ -52,7 +52,7 @@ public:
 				}
 				else {
 					string value;
-					cin >> value;
+					std::getline(std::cin, value);
 					if (colum == "Email") {
 						if (value.find("@") == string::npos) {
 							cout << "El email ingresado no es valido, intente nuevamente" << endl;
@@ -87,8 +87,8 @@ public:
 			auto valid = false;
 			do {
 				if (colum != "Email" && colum != "Telefono") {
-					string value;
-					cin >> value;
+						string value;
+						std::getline(std::cin, value);
 					if (value.length() < 3) {
 						cout << "El " << colum << " ingresado no es valido, intente nuevamente" << endl;
 						continue;
@@ -105,7 +105,7 @@ public:
 				}
 				else {
 					string value;
-					cin >> value;
+					std::getline(std::cin, value);
 					if (colum == "Email") {
 						if (value.find("@") == string::npos) {
 							cout << "El email ingresado no es valido, intente nuevamente" << endl;

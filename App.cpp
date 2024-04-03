@@ -97,6 +97,7 @@ public:
 					this->printTitle("REGISTRO DE CLIENTES");
 					cout << "Por favor ingrese los datos del cliente";
 					cout << endl << endl << endl;
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 					auto customer = customerService.createNewCustomer(customerList);
 					cout << endl << endl << endl;
 
@@ -185,6 +186,7 @@ public:
 							cin >> temp;
 
 							if (temp == "1" || temp == "si") {	
+								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 								c.modifiCustomer();
 								cout << endl << endl << endl;
 								this->printSeparator(1);

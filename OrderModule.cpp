@@ -29,7 +29,7 @@ public:
 		cout << "RECIBO DE PEDIDO" << endl;
 		cout << "-------------------------" << endl << endl << endl;
 
-		cout << "ID de la venta: " << this->id << endl;
+		cout << "ID del Pedido: " << this->id << endl;
 		cout << "Proveedor: " << this->Supplier.getName() << " " << this->Supplier.getLastName() << endl;
 		cout << "Productos: " << endl;
 		for (auto product : this->productList) {

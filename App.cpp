@@ -122,7 +122,7 @@ public:
 						cout << "Cliente no guardado" << endl;
 					}
 
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					cin >> temp;
 				}
 				  break;
@@ -209,7 +209,7 @@ public:
 						cout << "Cliente no encontrado" << endl;
 					}
 
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					string temp;
 					cin >> temp;
 				}
@@ -253,7 +253,7 @@ public:
 					}
 					else {
 						cout << "Desea eliminar al Cliente? " << endl;
-						cout << "(En caso de no escojer una opcion valida el usuario ser� eliminado)" << endl << endl;
+						cout << "En caso de no elegir una opción válida, el usuario será eliminado." << endl << endl;
 						cout << "1. Si" << endl;
 						cout << "2. No" << endl;
 						int deleteOption;
@@ -274,7 +274,7 @@ public:
 						}
 
 					}
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					string temp;
 					cin >> temp;
 
@@ -313,7 +313,7 @@ public:
 						this->printSeparator(1);
 						cout << endl;
 					}
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					string temp;
 					cin >> temp;
 						
@@ -325,7 +325,7 @@ public:
 				default:
 					this->clear();
 					cout << "Opcion no valida, Intente nuevamente" << endl;
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					string temp;
 					cin >> temp;
 					break;
@@ -382,7 +382,7 @@ public:
 							cout << "Producto no guardado" << endl;
 						}
 
-						cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+						cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 						cin >> temp;
 					}
 					break;
@@ -415,7 +415,7 @@ public:
 							}
 						}	
 
-						cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+						cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 						string temp;
 						cin >> temp;
 					}
@@ -470,7 +470,7 @@ public:
 							cout << "Producto no encontrado" << endl;
 						}
 
-						cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+						cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 						string temp;
 						cin >> temp;
 					}
@@ -535,7 +535,7 @@ public:
 								break;
 							}
 						}
-						cout << endl << "Para continuar presione cualquier tecla y luego Enter" << endl;
+						cout << endl << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 						string temp;
 						cin >> temp;		
 					}
@@ -574,7 +574,7 @@ public:
 							this->printSeparator(1);
 							cout << endl;
 						}
-						cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+						cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 						string temp;
 						cin >> temp;	
 					}
@@ -585,7 +585,7 @@ public:
 				default:
 					this->clear();
 					cout << "Opcion no valida, Intente nuevamente" << endl;
-					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
 					string temp;
 					cin >> temp;
 					break;
@@ -735,7 +735,7 @@ public:
 					} while (continueProcess);
 
 					if (products.size() == 0) {
-						cout << "No se ha introducido los suficientes productos para crear el pedido" << endl;
+						cout << "No se han ingresado suficientes productos para crear el pedido." << endl;
 						cout << "Pedido no creado" << endl;
 						this->pause();
 						break;

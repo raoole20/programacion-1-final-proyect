@@ -4,18 +4,20 @@
 #include <iostream>
 #include <random>
 #include <sstream>
-#include "UUID.cpp"
+#include "UUID.cpp" // Incluir la clase UUID
 using namespace std;
 
 class Customers
 {
 public:
+    // Constructor con valores predeterminados para name, lastName, email y phone
 	Customers(string name = "", string lastName = "", string email = "", string phone = "") {
 		this->name = name;
 		this->lastName = lastName;
 		this->email = email;
 		this->phone = phone;
 	}
+    // Mostrar la informaci�n del usuario
 	void displayUserInformation() {
 		cout << "ID del usuario: " << this->id << endl;
 		cout << "Nombre del usuario: " << this->name << endl;
@@ -24,11 +26,12 @@ public:
 		cout << "Telefono del usuario: " << this->phone << endl;
 	};
 
+    // Crear un nuevo cliente
 	Customers createNewCustomer (vector<Customers> customers) { 
-		Identify id;
-		string colums[4] = { "Nombre", "Apellido", "Email", "Telefono" };
+	    Identify id; // Crear una instancia de la clase UUID
+    	string colums[4] = { "Nombre", "Apellido", "Email", "Telefono" };
 		Customers newCustomer("", "", "", "");
-		newCustomer.setId(to_string(id._id));
+        newCustomer.setId(to_string(id._id)); // Establecer un ID �nico para el nuevo cliente
 		for (auto colum : colums) {
 			cout << "Ingrese el " << colum << " del cliente: ";
 			auto valid = false;
@@ -79,7 +82,7 @@ public:
 		}
 		return newCustomer;
 	}
-
+   // Modificar un cliente
 	void modifiCustomer() {
 		string colums[4] = { "Nombre", "Apellido", "Email", "Telefono" };
 		for (auto colum : colums) {
@@ -126,7 +129,7 @@ public:
 			} while (!valid);
 		}
 	}	
-
+   // Comprobar si ya existe un cliente con el email dado
 	bool existCustomer(string email, vector<Customers> customers) {
 		for (auto c : customers) {
 			if (c.getEmail() == email) {
@@ -135,6 +138,7 @@ public:
 		}
 		return false;
 	}
+
 	string getId() { return this->id; };	
 	string getLastName() { return this->lastName; };
 	string getEmail() { return this->email; };

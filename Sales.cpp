@@ -27,7 +27,7 @@ public:
 
 	void displaySalesInformation() {
 		cout << "RECIBO DE VENTA" << endl;
-		cout << "-------------------------" << endl << endl << endl;
+		cout << "------------------------------" << endl << endl << endl;
 
 		cout << "ID de la venta: " << this->id << endl;
 		cout << "Cliente: " << this->customer.getName() << " " << this->customer.getLastName() << endl;

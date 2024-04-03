@@ -5,6 +5,7 @@
 #include "Product.cpp"
 #include "Sales.cpp"
 #include "ProductQuantity.cpp"
+#include "Supplier.cpp"
 using namespace std;
  // Constructor de la clase App
 class App
@@ -32,7 +33,8 @@ public:
 		cout << "Seleccione una opcion:" << endl << endl;
 		cout << "1. Modulo de Clientes" << endl;
 		cout << "2. Modulo de Producto" << endl;
-		cout << "3. Modulo de Pedidos/Ventas" << endl;
+		cout << "3. Modulo de Ventas" << endl;
+		cout << "4. Modulo de Proveedores" << endl;
 		cout << "9. Mostrar Integrantes" << endl;
 		cout << "10. Salir" << endl;
 
@@ -516,7 +518,7 @@ public:
 						else {
 							cout << "Desea eliminar al Producto? " << endl;
 							cout << "Cualquier opcion diferente a 1 sera considerado como un no" << endl;
-							cout << "(En caso de no escoger una opcion valida el producto sera eliminado)" << endl << endl;
+							cout << "En caso de no elegir una opción válida, el producto será eliminado." << endl << endl;
 							cout << "1. Si" << endl;
 							cout << "2. No" << endl;
 							int deleteOption;
@@ -599,8 +601,10 @@ public:
 			this->clear();
 			this->printTitle("MENU DE VENTAS");
 			cout << "Seleccione una opcion:" << endl << endl;
-			cout << "1. Crear Pedido" << endl;
+			cout << "1. Facturación" << endl;
 			cout << "2. Listar Facturas" << endl;
+			cout << "3. Pedidos" << endl;
+			cout << "4. Listar Pedidos" << endl;
 			cout << "5. Volver al menu principal" << endl;
 
 			int option;
@@ -610,8 +614,8 @@ public:
 				case 1:
 				{
 					this->clear();
-					this->printTitle("Pedido");
-					cout << "Por favor ingrese los datos del pedido";
+					this->printTitle("Módulo Factura");
+					cout << "Por favor ingrese los datos de la Factura";
 					cout << endl << endl << endl;
 					this->printSeparator(1);
 					this->printSeparator(1);
@@ -653,7 +657,7 @@ public:
 							cout << "Cliente guardado con exito" << endl;
 						}
 						else {
-							cout << "Pedido no creado" << endl;
+							cout << "Factura no creada" << endl;
 							this->pause();
 							break;
 						}
@@ -713,7 +717,7 @@ public:
 									}
 								}
 								else {
-									cout << "Producto agregado al pedido..." << endl;
+									cout << "Producto agregado..." << endl;
 									currentProduct.setStock(currentProduct.getStock() - quantity);
 									products.push_back({ quantity, currentProduct });
 									continueWithSubProcess = false;
@@ -735,8 +739,8 @@ public:
 					} while (continueProcess);
 
 					if (products.size() == 0) {
-						cout << "No se han ingresado suficientes productos para crear el pedido." << endl;
-						cout << "Pedido no creado" << endl;
+						cout << "No se han ingresado suficientes productos para crear una factura." << endl;
+						cout << "Factura no creada" << endl;
 						this->pause();
 						break;
 					}
@@ -773,6 +777,261 @@ public:
 		}
 	}
 
+void SupplierMenu() {
+		auto continueProcess = true;
+		while (continueProcess) {
+			this->clear();
+			this->printTitle("MENU DE PROVEEDORES");
+			cout << "Seleccione una opcion:" << endl << endl;
+			cout << "1. Registrar Proveedor" << endl;
+			cout << "2. Listar Proveedor" << endl;
+			cout << "3. Modificar Proveedor" << endl;
+			cout << "4. Eliminar Proveedor" << endl;
+			cout << "5. Buscar Proveedor por ID" << endl;
+			cout << "6. Volver al menu principal" << endl;
+
+			int option;
+			cin >> option;
+			switch (option)
+			{
+				case 1: {
+					this->clear();
+					this->printTitle("REGISTRO DE PROVEEDORES");
+					cout << "Por favor ingrese los datos del Proveedor";
+					cout << endl << endl << endl;
+					auto Supplier = SupplierService.createNewSupplier(SupplierList);
+					cout << endl << endl << endl;
+
+					this->printTitle("Proveedores");
+					cout << endl;
+					cout << "Detalles del proveedor:";
+					cout << endl << endl << endl;
+					Supplier.displayUserInformation();
+					cout << endl << endl << endl;
+
+					cout << "Desea guardar al Proveedor" << endl;
+					cout << "1. Si" << endl;
+					cout << "2. No" << endl;
+					string temp;
+					cin >> temp;
+
+					if (temp == "1") {
+						this->SupplierList.push_back(Supplier);
+						cout << "Proveedor guardado con exito" << endl;
+					}
+					else {
+						cout << "Proveedor no guardado" << endl;
+					}
+
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
+					cin >> temp;
+				}
+				  break;
+				case 2: {
+					this->clear();
+					this->printTitle("Lista Proveedor");
+					cout << "Lista de proveedores registrados" << endl;
+
+					if (SupplierList.size() == 0) {
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						cout << "No hay proveedores registrados" << endl;
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl;
+					}
+					else {
+						for (auto c : this->SupplierList) {
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl << endl << endl;
+							c.displayUserInformation();
+							cout << endl << endl << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl;
+						}
+					}
+
+
+					cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
+					string temp; 
+					cin >> temp;
+				}
+					  break;
+				case 3: {
+					this->clear();
+					this->printTitle("Modificar Proveedor");
+					cout << "Ingrese el ID del proveedor a modificar" << endl;
+					string id;
+					cin >> id;
+
+					auto SupplierFound = false;
+					for (auto &c : this->SupplierList) {
+						if (c.getId() == id) {
+							SupplierFound = true;
+							this->printTitle("Proveedores");
+							cout << endl;
+							cout << "detalles del proveedor:";
+							cout << endl << endl << endl;
+							c.displayUserInformation();
+							cout << endl << endl << endl;
+
+							cout << "Desea modificar al Proveedor" << endl;
+							cout << "Cualquier opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
+							cout << "1. Si" << endl;
+							cout << "2. No" << endl;
+							string temp;
+							cin >> temp;
+
+							if (temp == "1" || temp == "si") {	
+								c.modifiSupplier();
+								cout << endl << endl << endl;
+								this->printSeparator(1);
+								this->printSeparator(1);
+								cout << endl;
+								cout << "Proveedor modificado con exito: " << endl;
+								this->printSeparator(1);
+								this->printSeparator(1);
+								cout << endl << endl;
+
+								c.displayUserInformation();
+							}
+							else {
+								cout << "Proveedor no modificado" << endl;
+							}
+						}
+					}
+
+					if (!SupplierFound) {
+						cout << "Proveedor no encontrado" << endl;
+					}
+
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
+					string temp;
+					cin >> temp;
+				}
+					  break;
+				case 4: {
+					this->clear();
+					this->printTitle("Eliminar Proveedor");
+					cout << "Ingrese el ID del Proveedor a buscar: " << endl;
+					string id;
+					cin >> id;
+
+					auto find = false;
+					auto index = 0;
+					auto countIteration = 0;
+					for (auto c : this->SupplierList) {
+						if (id == c.getId()) {
+							cout << "Detalles del Proveedor: " << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl << endl << endl;
+							c.displayUserInformation();
+							cout << endl << endl << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl;
+							find = true;
+							index= countIteration;
+						}
+						countIteration++;
+					}
+
+					if (!find) {
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						cout << "Proveedor no encontrado" << endl;
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl;
+					}
+					else {
+						cout << "Desea eliminar al Proveedor? " << endl;
+						cout << "En caso de no elegir una opción válida, el usuario será eliminado." << endl << endl;
+						cout << "1. Si" << endl;
+						cout << "2. No" << endl;
+						int deleteOption;
+						cin >> deleteOption;
+
+						switch (deleteOption)
+						{
+							case 2:
+								cout << "el usuario no ha sido eliminado" << endl;
+								break;
+							case 1:	
+							default:
+								this->SupplierList.erase(std::next(SupplierList.begin(), index));
+								cout << "el usuario ha sido eliminado" << endl;
+								this->printSeparator(1);
+								cout << endl;
+								break;
+						}
+
+					}
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
+					string temp;
+					cin >> temp;
+
+				}
+					break;
+				case 5: {
+					this->clear();
+					this->printTitle("Buscar Proveedor");
+					cout << "Ingrese el ID del Proveedor a buscar: " << endl;
+					string id;
+					cin >> id;
+
+					auto find = false;
+					for (auto c : this->SupplierList) {
+						if (id == c.getId()) {	
+							cout << "Detalles del Proveedor: " << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl << endl << endl;
+							c.displayUserInformation();
+							cout << endl << endl << endl;
+							this->printSeparator(1);
+							this->printSeparator(1);
+							cout << endl;
+							find = true;
+						}	
+					}
+
+					if (!find) {
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl << endl << endl;
+						cout << "Proveedor no encontrado" << endl;
+						cout << endl << endl << endl;
+						this->printSeparator(1);
+						this->printSeparator(1);
+						cout << endl;
+					}
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
+					string temp;
+					cin >> temp;
+						
+				}
+					  break;
+				case 6:
+					continueProcess = false;
+					break;
+				default:
+					this->clear();
+					cout << "Opcion no valida, Intente nuevamente" << endl;
+					cout << "Para continuar, presione cualquier tecla y luego Enter" << endl;
+					string temp;
+					cin >> temp;
+					break;
+			}
+		}
+	}
 	void pause() {
 		cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
 		system("pause");
@@ -787,4 +1046,6 @@ private:
 	vector<Sales> salesList;
 	Customers customerService;
 	Product productService;
+	Suppliers SupplierService;
+	vector<Suppliers> SupplierList;
 };

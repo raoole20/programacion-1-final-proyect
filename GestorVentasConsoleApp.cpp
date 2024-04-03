@@ -21,39 +21,42 @@
 
 int main()
 {
-	App app;
-	app.init();
+    // Crear una instancia de la aplicación
+    App app;
+    app.init();
 
-	while (app.getRun())
-	{
-		int option = app.showMenu();
-		switch (option)
-		{
-			case 1: 
-				app.customerMenu();
-				break;
-			case 2: 
-				app.productMenu();
-				break;
-			case 3:
-				app.salesMenu();
-				break;
-			case 9:
-				app.clear();
-				app.init();
-				break;
-			case 10:
-				app.killApp();
-				break;
-			default:	
-				app.clear();
-				cout << "Opcion no valida, Intente nuevamente" << endl;	
-				cout << "Para continuar presione cualquier tecla y luego Enter" << endl;
-				string temp;
-				cin >> temp;
-				break;
-		}
-	}
+    // Bucle principal de la aplicación
+    while (app.getRun())
+    {
+        // Mostrar el menú y obtener la opción seleccionada
+        int option = app.showMenu();
+        switch (option)
+        {
+            case 1: 
+                app.customerMenu(); // Acceder al módulo de clientes
+                break;
+            case 2: 
+                app.productMenu(); // Acceder al módulo de productos
+                break;
+            case 3:
+                app.salesMenu(); // Acceder al módulo de pedidos/ventas
+                break;
+            case 9:
+                app.clear();
+                app.init(); // Mostrar nuevamente la pantalla de inicio
+                break;
+            case 10:
+                app.killApp(); // Finalizar la aplicación
+                break;
+            default:	
+                app.clear();
+                cout << "Opción no válida, inténtalo nuevamente" << endl;	
+                cout << "Para continuar, presiona cualquier tecla y luego Enter" << endl;
+                string temp;
+                cin >> temp;
+                break;
+        }
+    }
 
-	return 0;
+    return 0;
 }

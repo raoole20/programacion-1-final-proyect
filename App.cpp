@@ -38,7 +38,7 @@ public:
 		cout << "9. Mostrar Integrantes" << endl;
 		cout << "10. Salir" << endl;
 
-		auto tempOption = 0;
+		int tempOption;
 		cin >> tempOption;
 
 		return tempOption;
@@ -67,7 +67,7 @@ public:
 		this->printSeparator(1);
 		cout << endl << endl << endl;
 		cout << "* Raul Espina: 30.643.473" << endl;
-		cout << "* Arelenys Dávila: 15.764.502" << endl;
+		cout << "* Arelenys Davila: 15.764.502" << endl;
 		cout << "Pulsar cualquier tecla para continuar..." << endl;
 		string temp;
 		cin >> temp;
@@ -169,7 +169,7 @@ public:
 					cin >> id;
 
 					auto customerFound = false;
-					for (auto c : this->customerList) {
+					for (auto &c : this->customerList) {
 						if (c.getId() == id) {
 							customerFound = true;
 							this->printTitle("Cliente");
@@ -180,12 +180,13 @@ public:
 							cout << endl << endl << endl;
 
 							cout << "Desea modificar al Cliente" << endl;
+							cout << "Cualquier opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
 							cout << "1. Si" << endl;
 							cout << "2. No" << endl;
 							string temp;
 							cin >> temp;
 
-							if (temp == "1") {	
+							if (temp == "1" || temp == "si") {	
 								c.modifiCustomer();
 								cout << endl << endl << endl;
 								this->printSeparator(1);
@@ -252,7 +253,7 @@ public:
 					}
 					else {
 						cout << "Desea eliminar al Cliente? " << endl;
-						cout << "(En caso de no escojer una opcion valida el usuario será eliminado)" << endl << endl;
+						cout << "(En caso de no escojer una opcion valida el usuario serï¿½ eliminado)" << endl << endl;
 						cout << "1. Si" << endl;
 						cout << "2. No" << endl;
 						int deleteOption;
@@ -268,6 +269,7 @@ public:
 								this->customerList.erase(std::next(customerList.begin(), index));
 								cout << "el usuario ha sido eliminado" << endl;
 								this->printSeparator(1);
+								cout << endl;
 								break;
 						}
 
@@ -365,12 +367,13 @@ public:
 						cout << endl << endl << endl;
 
 						cout << "Desea guardar el Producto" << endl;
+						cout << "Cualquier otra opcion diferente a 1 o \"si\" sera considerado como un no" << endl;
 						cout << "1. Si" << endl;
 						cout << "2. No" << endl;
 						string temp;
 						cin >> temp;
 
-						if (temp == "1") {
+						if (temp == "1" || temp == "si") {
 							this->productList.push_back(producto);
 							cout << "Producto guardado con exito" << endl;
 						}
@@ -425,7 +428,7 @@ public:
 						cin >> id;
 
 						auto productFound = false;
-						for (auto p : this->productList) {
+						for (auto &p : this->productList) {
 							if (p.getId() == id) {
 								productFound = true;
 								this->printTitle("Producto");
@@ -509,7 +512,7 @@ public:
 						}
 						else {
 							cout << "Desea eliminar al Producto? " << endl;
-							cout << "(En caso de no escojer una opcion valida el producto será eliminado)" << endl << endl;
+							cout << "(En caso de no escojer una opcion valida el producto serï¿½ eliminado)" << endl << endl;
 							cout << "1. Si" << endl;
 							cout << "2. No" << endl;
 							int deleteOption;
